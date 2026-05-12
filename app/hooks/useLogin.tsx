@@ -8,38 +8,55 @@ import Cookies from 'js-cookie';
 export function useLogin() {
   const router = useRouter();
 
-  // Estados simples e separados, iguais aos do cadastro de produtos
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
-  // Função disparada ao clicar no botão Entrar
   function entrar(evento: React.FormEvent) {
-    evento.preventDefault(); // Evita que a página recarregue
+    evento.preventDefault();
 
-    // Montamos o objeto que vai para a API
     const dadosLogin = {
       username: username,
-      password: password
+      password: password,
     };
 
     api.post('/users/auth', dadosLogin)
       .then((resposta) => {
-        Cookies.set('logged', 'true', { expires: 1 }); // Expira as credenciais de login em 1 dia
-        Cookies.set('userName', resposta.data.name, { expires: 1 }); // Expira o nome em 1 dia
+        Cookies.set('logged', 'true', { expires: 1 });
+        Cookies.set('userName', resposta.data.name, { expires: 1 });
 
-        // Vai para a página principal (Dashboard)
         router.push('/dashboard');
       })
       .catch(() => {
-        // Mostra o erro simples se a senha estiver errada
         alert('Erro: Usuário ou senha incorretos!');
       });
   }
 
-  // Exportamos tudo que a tela vai precisar
+  function cadastrar(evento: React.FormEvent) {
+    evento.preventDefault();
+
+    const dadosCadastro = {
+      username: username,
+      password: password,
+      name: name
+    };
+
+    api.post('/users/', dadosCadastro)
+      .then((resposta) => {
+        alert("Usuário cadastrado com sucesso!");
+
+        router.push('/');
+      })
+      .catch(() => {
+        alert('Erro: Informações inválidas para o cadastro!');
+      });
+  }
+
   return {
     username, setUsername,
     password, setPassword,
-    entrar
+    name, setName,
+    entrar,
+    cadastrar
   };
 }

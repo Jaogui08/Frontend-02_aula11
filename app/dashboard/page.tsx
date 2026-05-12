@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie"; // Importamos a biblioteca
+import Cookies from "js-cookie";
+import NavBar from "../components/NavBar";
+import "../formStyle.css";
 
 
 export default function Dashboard() {
@@ -30,12 +32,15 @@ export default function Dashboard() {
 
 
     return (
-        <div>
-            <h1>Seja bem-vindo, {nome || "Visitante"}!</h1>
-            <p>Esta é uma área protegida</p>
+        <section className="dashboardContainer">
+            <NavBar/>
 
+            <div className="dashboardCont">
+                <h1>Seja bem-vindo, {nome || "Visitante"}!</h1>
+                <p>Esta é uma área protegida</p>
 
-            <button onClick={logout}> Sair do Sistema </button>
-        </div>
+                <button onClick={logout}> Sair do Sistema </button>
+            </div>
+        </section>
     );
 }

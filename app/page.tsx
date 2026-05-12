@@ -5,7 +5,7 @@ import { useLogin } from './hooks/useLogin';
 import "./formStyle.css"
 
 export default function Home() {
-  // Puxamos as funções e variáveis do nosso Hook
+  
   const { 
     username, setUsername, 
     password, setPassword, 
@@ -17,7 +17,6 @@ export default function Home() {
       <div className="login-card">
         <h1>Área de Acesso</h1>
         
-        {/* Quando o formulário for submetido, chama a função entrar */}
         <form onSubmit={entrar}>
           
           <div className="input-group">
