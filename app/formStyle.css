@@ -75,7 +75,6 @@
 
 .dashboardContainer{
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
@@ -90,6 +89,7 @@
     border-radius: 10px;
     padding: 50px;
     font-size: 1.1rem;
+    margin-top: 140px;
 }
 
 .dashboardCont h1{

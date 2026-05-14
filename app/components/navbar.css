@@ -1,0 +1,28 @@
+nav{
+    background-color: #000000;
+    width: 100%;
+    height: 80px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 50px;
+    font-size: 1rem;
+}
+
+.navImg{
+    width: 55px;
+    border-radius: 1000px;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.links button{
+    background-color: #da7b29;
+    padding: 10px;
+    padding-inline: 15px;
+    border-radius: 10px;
+}
