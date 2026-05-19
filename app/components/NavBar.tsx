@@ -49,6 +49,7 @@ export default function NavBar(){
             <div className="links">
                 <a href="/dashboard">Dashboard</a>
                 <a href="/dashboard/produtos">Produtos</a>
+                <a href="/dashboard/estoque">Estoque</a>
                 <button onClick={logout}>
                     Sair do Sistema
                 </button>
