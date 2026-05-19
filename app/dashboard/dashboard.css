@@ -1,0 +1,20 @@
+.sectionContainer{
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+.containerProducts{
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 4px 10px #0000004e;
+    width: 350px;
+    text-align: center;
+}
+.edit:hover{
+    text-decoration: underline;
+}
+.delete:hover{
+    text-decoration: underline;
+}

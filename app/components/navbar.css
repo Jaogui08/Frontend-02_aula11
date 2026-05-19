@@ -13,6 +13,10 @@ nav{
 .navImg{
     width: 55px;
     border-radius: 1000px;
+    transition: transform 0.3s;
+}
+.navImg:hover{
+    transform: scale(1.05);
 }
 
 .links{
@@ -20,9 +24,22 @@ nav{
     align-items: center;
     gap: 25px;
 }
+.links a{
+    transition: transform 0.3s, color 0.3s;
+}
+.links a:hover{
+    transform: scale(1.05);
+    color: #dcdcdc;
+}
 .links button{
-    background-color: #da7b29;
+    background-color: #e91414;
     padding: 10px;
     padding-inline: 15px;
     border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.links button:hover{
+    background-color: #b60d0d;
+    transform: scale(1.05);
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./navbar.css"
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 export default function NavBar(){
     const router = useRouter();
@@ -21,9 +22,23 @@ export default function NavBar(){
 
 
     function logout() {
-        Cookies.remove("logged");
-        Cookies.remove("userName");
-        router.push("/");
+        Swal.fire({
+          title: "Sair da conta?",
+          text: "Sua sessão atual será encerrada",
+          icon: "warning",
+          showConfirmButton: true,
+          showCancelButton: true,
+          confirmButtonText: "Sim, sair",
+          cancelButtonText: "Cancelar",
+          confirmButtonColor: "#e91414",
+          cancelButtonColor: "#848484ff",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Cookies.remove("logged");
+                Cookies.remove("userName");
+                router.push("/");
+            }
+        });
     }
     
     return(

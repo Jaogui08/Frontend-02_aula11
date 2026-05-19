@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '../lib/api';
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
 
 export function useLogin() {
   const router = useRouter();
@@ -28,7 +29,12 @@ export function useLogin() {
         router.push('/dashboard');
       })
       .catch(() => {
-        alert('Erro: Usuário ou senha incorretos!');
+        Swal.fire({
+          title: "Erro ao fazer login!",
+          text: "Usuário ou senha incorretos",
+          icon: "error",
+          confirmButtonColor: "#e91414"
+        });
       });
   }
 
@@ -43,12 +49,21 @@ export function useLogin() {
 
     api.post('/users/', dadosCadastro)
       .then((resposta) => {
-        alert("Usuário cadastrado com sucesso!");
+        Swal.fire({
+          title: "Usuário cadastrado com sucesso!",
+          icon: "success",
+          confirmButtonColor: "#e91414"
+        });
 
         router.push('/');
       })
       .catch(() => {
-        alert('Erro: Informações inválidas para o cadastro!');
+        Swal.fire({
+          title: "Erro ao cadastrar usuário!",
+          text: "Informações inseridas inválidas",
+          icon: "error",
+          confirmButtonColor: "#e91414"
+        });
       });
   }
 
