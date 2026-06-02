@@ -138,9 +138,21 @@ export function useProdutos() {
         setUrl('');
     };
 
+    const visualizarProduto = (p: Produto) => {
+        Swal.fire({
+            title: p.nome,
+            text: p.descricao,
+            imageUrl: p.url,
+            imageWidth: 300,
+            imageHeight: 300,
+            confirmButtonText: "Fechar",
+            confirmButtonColor: "#e91414",
+        });
+    };    
+
     return {
         produtos, loading, listarProdutos, salvar, excluir, prepararEdicao,
         nome, setNome, descricao, setDescricao, preco, setPreco, url, setUrl,
-        editandoId, limparFormulario, buscarProdutoPorId
+        editandoId, limparFormulario, buscarProdutoPorId, visualizarProduto,
     };
 }

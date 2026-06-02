@@ -9,7 +9,7 @@ import NavBar from "../components/NavBar";
 export default function Dashboard() {
     const router = useRouter();
     const [name, setName] = useState("");
-    const { produtos, loading, listarProdutos, excluir } = useProdutos();
+    const { produtos, loading, listarProdutos, excluir, visualizarProduto } = useProdutos();
 
     useEffect(() => {
         listarProdutos();
@@ -41,14 +41,18 @@ export default function Dashboard() {
                         <div>
                             {produtos.map(p => (
                                 <div key={p.id} style={{ borderBottom: '1px solid #757575', display: "grid", gridTemplateColumns: "1fr 3fr 1fr 1fr", alignItems: "center", fontWeight: "500" }}>
-                                    <div style={{ paddingTop: "8px", paddingBottom: "8px", paddingLeft: "22px" }}><img
-                                        src={p.url}
-                                        style={{
-                                            width: "80px",
-                                            height: "80px",
-                                            borderRadius: "10px"
-                                        }}
-                                    /></div>
+                                    <div style={{ paddingTop: "8px", paddingBottom: "8px", paddingLeft: "22px" }}>
+                                        <img
+                                            src={p.url}
+                                            onClick={() => visualizarProduto(p)}
+                                            style={{
+                                                width: "80px",
+                                                height: "80px",
+                                                borderRadius: "10px",
+                                                cursor: "pointer"
+                                            }}
+                                        />
+                                    </div>
                                     <div style={{ textAlign: "left" }}>{p.nome}</div>
                                     <div style={{ textAlign: "left" }}>R$ {(Number(p.preco) || 0).toFixed(2)}</div>
                                     <div style={{ textAlign: 'center' }}>
