@@ -11,25 +11,45 @@ export function useProdutos() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    // Estados para o formulário (seguindo seu padrão de states separados)
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [preco, setPreco] = useState('');
     const [url, setUrl] = useState('');
     const [editandoId, setEditandoId] = useState<number | null>(null);
 
-    // GET - Listar
+    // GET - Listar todos
     const listarProdutos = useCallback(async () => {
         setLoading(true);
         try {
             const resposta = await api.get('/produtos/');
             setProdutos(resposta.data);
         } catch (error) {
-            alert("Erro ao buscar produtos");
+            Swal.fire({
+                title: "Erro!",
+                text: "Erro ao buscar produtos",
+                icon: "error",
+                confirmButtonColor: "#e91414",
+            });
         } finally {
             setLoading(false);
         }
     }, []);
+
+    // GET - Buscar um produto específico pelo ID
+    const buscarProdutoPorId = async (id: number) => {
+        try {
+            const resposta = await api.get(`/produtos/${id}`);
+            prepararEdicao(resposta.data);
+        } catch (error) {
+            Swal.fire({
+                title: "Erro!",
+                text: "Erro ao buscar os detalhes do produto",
+                icon: "error",
+                confirmButtonColor: "#e91414",
+            });
+            router.push('/dashboard/produtos');
+        }
+    };
 
     // POST / PUT - Salvar
     const salvar = async (e: React.FormEvent) => {
@@ -58,11 +78,11 @@ export function useProdutos() {
             router.push('/dashboard');
         } catch (error) {
             Swal.fire({
-                    title: "Erro!",
-                    text: "Erro ao adicionar o produto",
-                    icon: "error",
-                    confirmButtonColor: "#e91414",
-                });
+                title: "Erro!",
+                text: "Erro ao adicionar o produto",
+                icon: "error",
+                confirmButtonColor: "#e91414",
+            });
         }
     };
 
@@ -83,7 +103,6 @@ export function useProdutos() {
                 try {
                     await api.delete(`/produtos/${id}`);
                     listarProdutos();
-
                     Swal.fire({
                         title: "Produto excluído",
                         text: "Produto excluído com sucesso!",
@@ -122,6 +141,6 @@ export function useProdutos() {
     return {
         produtos, loading, listarProdutos, salvar, excluir, prepararEdicao,
         nome, setNome, descricao, setDescricao, preco, setPreco, url, setUrl,
-        editandoId, limparFormulario
+        editandoId, limparFormulario, buscarProdutoPorId
     };
 }

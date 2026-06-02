@@ -44,7 +44,7 @@ export default function NavBar(){
     return(
         <nav>
             <div>
-                <img className="navImg" src="../deathbat.png"/>
+                <img className="navImg" src="/deathbat.png"/>
             </div>
             <div className="links">
                 <a href="/dashboard">Dashboard</a>
