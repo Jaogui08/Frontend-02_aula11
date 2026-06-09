@@ -57,6 +57,18 @@
     background-color: #b60d0d;
     transform: scale(1.05);
 }
+.cancel{
+    background: none;
+    border: none;
+    color: #828282ff;
+    margin-top: 15px; 
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+.cancel:hover{
+    transform: scale(1.05);
+    color: rgb(107, 106, 106);
+}
 
 /* Link para cadastro */
 .footer-link {

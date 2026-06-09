@@ -1,3 +1,4 @@
+import "../formStyle.css"
 import { useProdutos } from "../hooks/useProduto";
 import { useEffect } from "react";
 
@@ -42,7 +43,7 @@ export default function ProdutosForm({ produtoId }: { produtoId?: number }) {
                     </button>
                     {editandoId && (
                         <button type="button" onClick={limparFormulario}
-                                style={{ background: 'none', border: 'none', color: "#828282ff", marginTop: '15px', cursor: 'pointer' }}>
+                                className="cancel">
                             Cancelar Edição
                         </button>
                     )}

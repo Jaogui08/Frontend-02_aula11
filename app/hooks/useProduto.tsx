@@ -136,6 +136,8 @@ export function useProdutos() {
         setDescricao('');
         setPreco('');
         setUrl('');
+
+        router.push("/dashboard");
     };
 
     const visualizarProduto = (p: Produto) => {
