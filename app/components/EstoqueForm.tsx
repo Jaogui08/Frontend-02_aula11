@@ -31,7 +31,6 @@ export default function EstoqueForm({ estoqueId }: { estoqueId?: number }) {
 
     if (loading) return <p style={{ textAlign: 'center', marginTop: '20px' }}>Carregando estoque...</p>;
 
-    // Filtra para exibir apenas produtos sem estoque (ou o produto atual em caso de edição)
     const produtosFiltrados = produtos.filter(p => {
         if (estoqueId && p.estoque?.id === Number(estoqueId)) return true;
 
